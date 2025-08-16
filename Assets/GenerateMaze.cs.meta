@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 7f7a013e01f2c3e44abf90c874b6e187
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Cell: {fileID: 6280542340393035478, guid: afdfa078b590e7b458f8002cad823baa, type: 3}
+  - CellFloor: {fileID: 3780857592500045805, guid: e7863ce9f4c14f748bf759c025ace35e, type: 3}
+  - Wall0: {fileID: 7827726223207835672, guid: 3fc6e3f94abf546429779f789bb0bacb, type: 3}
+  - Wall1: {fileID: 3734512623338008442, guid: ad28c62b6217b74419caa28277b642bb, type: 3}
+  - Wall2: {fileID: 4284484489883779189, guid: f14d4768fc6311042a01587c64c45d31, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
