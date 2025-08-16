@@ -248,19 +248,19 @@ public class GenerateMaze : MonoBehaviour
                     if (pair.getCell(true).GetComponent<ICell>().branch == j * 3)
                     {
                         GameObject[] tmp = pair.getNeighbors(true, mazeCells);
-                        for (int i = 0; i < 3; i++)
+                        for (int i = 0; i < tmp.Length; i++)
                         {
                             {
                                 if (
                                     pair.getCell(true).GetComponent<ICell>().branch + 1 == tmp[i].GetComponent<ICell>().branch
-                                    && (!(pair.x <= 11 && pair.x >= 4 && pair.z <= 11 && pair.z >= 4)
-                                        || (pair.x + pair.z >= 19)
-                                        || (pair.x + pair.z < 11)
+                                    && (!(pair.x < 12 && pair.x >= 3 && pair.z <= 11 && pair.z >= 4)
+                                        || (pair.x - pair.z > 4)
+                                        || (pair.z - pair.x > 3)
                                     )
                                 )
                                 {
-                                    doorCell.Add(tmp[i]);
-                                    doorDirection.Add((2 * i + 3) % 6);
+                                    doorCell.Add(pair.getCell(true));
+                                    doorDirection.Add(2 * i);
                                 }
                             }
                         }
@@ -277,20 +277,28 @@ public class GenerateMaze : MonoBehaviour
                             {
                                 if (
                                     pair.getCell(false).GetComponent<ICell>().branch + 1 == tmp[i].GetComponent<ICell>().branch
-                                    && (!(pair.x <= 11 && pair.x >= 4 && pair.z <= 11 && pair.z >= 4)
-                                        || (pair.x + pair.z > 19)
-                                        || (pair.x + pair.z <= 11)
+                                    && (!(pair.x <= 12 && pair.x > 3 && pair.z <= 11 && pair.z >= 4)
+                                        || (pair.x - pair.z > 4)
+                                        || (pair.z - pair.x > 3)
                                     )
                                 )
                                 {
-                                    doorCell.Add(tmp[i]);
-                                    doorDirection.Add(2 * i);
+                                    doorCell.Add(pair.getCell(false));
+                                    doorDirection.Add((2 * i + 3) % 6);
                                 }
                             }
                         }
                     }
                 }
                 catch { }
+            }
+            foreach (int item in doorDirection)
+            {
+                Debug.Log(item);
+            }
+            foreach (GameObject cell in doorCell)
+            {
+                Debug.Log(cell.name);
             }
             int doorNumber = Random.Range(0, doorDirection.Count);
             string[] parts = doorCell[doorNumber].name.Split(':');
